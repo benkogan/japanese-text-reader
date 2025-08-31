@@ -2,6 +2,8 @@
 
 A web application for reading Japanese text with interactive dictionary lookups. Enter Japanese text for analysis and click any word to see its readings (in hiragana) and definition in English.
 
+![Screenshot](screenshot.png)
+
 ## Getting started
 
 Clone this repository, install dependencies with `npm install`, and start the server with `npm start`. Then, open your browser to <http://localhost:3000>.
