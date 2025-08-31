@@ -51,12 +51,17 @@ class Dictionary {
       }
     }
 
+    // Filter entries with negative popularity scores. For some reason, JMDict
+    // contains a lot of duplicate data but dupes seem to always have negative
+    // scores while useful entries seem to always have a positive score.
+    const filteredEntries = uniqueEntries.filter(entry => entry[4] >= 0);
+
     // Sort by popularity score, descending.
-    uniqueEntries.sort((a, b) => b[4] - a[4])
+    filteredEntries.sort((a, b) => b[4] - a[4])
 
     // Merge entry data by sequence number.
     const mergedBySeqNum = new Map();
-    for (const entry of uniqueEntries) {
+    for (const entry of filteredEntries) {
       // The sequence number identifies terms with identical headwords.
       const {
         [0]: expression,
